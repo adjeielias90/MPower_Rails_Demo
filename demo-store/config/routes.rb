@@ -1,6 +1,8 @@
 MpowerNew::Application.routes.draw do
   resources :carts
   match "cart/checkout" => "carts#checkout", :as => :checkout
+  match "cart/request_charge" => "carts#request_charge", :as => :request_charge
+  match "cart/perform_charge" => "carts#perform_charge", :as => :perform_charge
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

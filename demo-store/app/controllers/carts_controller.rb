@@ -16,6 +16,35 @@ class CartsController < ApplicationController
         redirect_to root_url, :notice => co.response_text
     end
   end
+
+  def request_charge
+    # We will programatically simulate the last 6 cart items as checkout items
+    @items = Cart.order("created_at DESC").limit(6)
+    co = MPower::Onsite::Invoice.new
+    total_amount = 0.0
+    @items.each do | item |
+      co.add_item(item.product_name,item.quantity,item.price,item.total_price)
+      total_amount += item.total_price
+    end
+    co.total_amount = total_amount
+    if co.create(params[:checkout][:account_alias])
+      @token = co.token
+    else
+      redirect_to root_url, :notice => co.response_text
+    end
+  end
+
+  def perform_charge
+    co = MPower::Onsite::Invoice.new
+    if co.charge(params[:checkout][:opr_token],params[:checkout][:confirm_token])
+      @receipt_url = co.receipt_url
+      @message = co.response_text
+      @customer_name = co.customer["name"]
+    else
+      redirect_to root_url, :notice => co.response_text
+    end
+  end
+
   # GET /carts
   # GET /carts.json
   def index

@@ -28,7 +28,17 @@
 <br />
 
 <%= link_to 'New Cart', new_cart_path %>
-
+<br/><br/>
 <% if @carts.size > 0 %>
-  <%= link_to 'Checkout Cart', checkout_path, :confirm => "You are about to checkout. Continue?" %>
+  <%= link_to 'Redirect Checkout', checkout_path, :confirm => "You are about to checkout. Continue?" %>
+  <%= form_for(:checkout, :url => { :action => "request_charge" }) do |f| %>
+
+  <div class="field">
+    <%= f.label :account_alias %><br />
+    <%= f.text_field :account_alias %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Onsite Payment" %>
+  </div>
+<% end %>
 <% end %>

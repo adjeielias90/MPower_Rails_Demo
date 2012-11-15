@@ -1,10 +1,10 @@
 # Change these keys
 
-MPower::Setup.master_key = "sdd6f2c90-f075-01d2f-5b69-00155d866600"
-MPower::Setup.public_key = "test_public_zzF34wvX9DE-OSDNhUqKoaTI4wc"
-MPower::Setup.private_key = "test_private_oDLVfm1e3yh0IsetdhdJvcl0ygA"
+MPower::Setup.master_key = "82403450-ee3a-4c57-9564-a8fbe30c5fb7"
+MPower::Setup.public_key = "test_public_M6-fRS1RCnzlGqgeLaBF5vLLoKs"
+MPower::Setup.private_key = "test_private_jKxSyaylcQdrQcuxAOFAbxvK5w4"
 MPower::Setup.mode = "test"
-MPower::Setup.token = "ca03737cf942cfg44f36"
+MPower::Setup.token = "7f6c81c1ea223674416e"
 
 MPower::Checkout::Store.name = "My Awesome Store"
 MPower::Checkout::Store.tagline = "This is my awesome store tag line."
