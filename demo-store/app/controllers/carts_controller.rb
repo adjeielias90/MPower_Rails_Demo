@@ -45,6 +45,12 @@ class CartsController < ApplicationController
     end
   end
 
+  def confirmation
+    co = MPower::Checkout::Invoice.new
+    co.confirm(params[:token])
+    @result = co
+  end
+
   # GET /carts
   # GET /carts.json
   def index
